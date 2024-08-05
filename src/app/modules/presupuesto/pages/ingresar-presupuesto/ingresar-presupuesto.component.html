@@ -1,0 +1,26 @@
+<div class="container-fluid">
+    <div class="row mt-5">
+        <div class="col-lg-6 offset-lg-3">
+            <h2 class="text-center fontTitle">Ingrese Presupuesto</h2>
+            <div class="card">
+                <div class="card-body">
+                    <form [formGroup]="form" (ngSubmit)="agregar()">
+                        <div class="text-center mb-3">
+                            @if(form.get('presupuesto').hasError('required') && form.get('presupuesto').touched){
+                            <span class="badge bg-danger textError">EL CAMPO ES OBLIGATORIO</span>
+                            }
+                            @if(form.get('presupuesto').hasError('min') && form.get('presupuesto').touched){
+                            <span class="badge bg-danger textError">EL PRESUPUESTO DEBE SER MAYOR A CERO</span>
+                            }
+                        </div>
+                        <input type="number" formControlName="presupuesto" class="form-control form-control-lg"
+                            placeholder="Ingrese su presupuesto..">
+
+                        <button type="submit" class="btn btn-secondary btn-lg btn-block mt-2"
+                            [disabled]="form.invalid">ACEPTAR</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
